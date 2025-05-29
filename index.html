@@ -73,6 +73,21 @@
       max-width: 400px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       border: 3px solid #e65300;
+      z-index: 1;
+    }
+
+    /* >>> This adds the orange curved decoration <<< */
+    .hero-content::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100%;
+      height: 100%;
+      border: 4px solid #ff6600;
+      border-radius: 30px;
+      z-index: -1;
+      box-sizing: border-box;
     }
 
     .hero-content h1 {
@@ -93,6 +108,7 @@
       padding: 10px 20px;
       border-radius: 20px;
       font-weight: bold;
+      display: inline-block;
     }
 
     .hero-content a:hover {
@@ -116,7 +132,7 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <h1>sabi website</h1>
+      <h1>Gross Lab</h1>
       <p>Mitochondria in Health and Disease</p>
       <a href="#">Contact →</a>
     </div>
