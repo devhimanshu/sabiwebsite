@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sabi | Mitochondria in Health and Disease</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gross Lab | Mitochondria in Health and Disease</title>
   <style>
     body, html {
       margin: 0;
@@ -48,28 +48,27 @@
 
     .hero {
       position: relative;
-      width: 90%;
+      width: 100%;
       height: 90vh;
-      margin: 30px auto;
-      border-radius: 40px;
       overflow: hidden;
+      margin: 0;
     }
 
     .hero video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  background-color: black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -1;
+      background-color: black;
     }
-
 
     .header-overlay {
       position: absolute;
-      top: 25%;
+      top: 20%;
       left: 5%;
       background: rgba(255, 255, 255, 0.95);
       padding: 20px 40px;
@@ -155,39 +154,6 @@
       font-weight: bold;
       font-size: 1em;
     }
-
-    .publications {
-      background: #f9f9f9;
-      border-radius: 20px;
-      padding: 40px;
-      margin-top: 60px;
-    }
-
-    .publications h3 {
-      text-align: center;
-      font-size: 1.6em;
-      margin-bottom: 30px;
-    }
-
-    .pub {
-      margin-bottom: 20px;
-    }
-
-    .pub-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .pub-authors {
-      font-size: 0.95em;
-      color: #444;
-    }
-
-    .pub-abstract {
-      font-size: 0.9em;
-      color: #e65300;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -203,7 +169,7 @@
 
   <div class="hero">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="sabi.mp4" type="video/mp4" />
+      <source src="sabi.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="header-overlay">
@@ -228,20 +194,6 @@
         <img src="im3.png" alt="Fibromyalgia & Mitochondria">
         <div class="caption">Fibromyalgia & Mitochondria</div>
       </div>
-    </div>
-  </section>
-
-  <section class="section publications">
-    <h3>Selected Publications</h3>
-    <div class="pub">
-      <div class="pub-title">MTCH2 controls energy demand and expenditure to fuel anabolism during adipogenesis</div>
-      <div class="pub-authors">Chourasia S., Petcu I. C., Shoffler C., Abbasian D., Wang H., Han X., et al. (2025) EMBO Journal. 44.4, p. 1007–1038</div>
-      <div class="pub-abstract">Abstract ↓</div>
-    </div>
-    <div class="pub">
-      <div class="pub-title">A BID–MTCH2 love story: Energizing mitochondria until apoptosis do them part?</div>
-      <div class="pub-authors">Gross A. (2024) Bioenergetics Communications. 2024, 2024.1</div>
-      <div class="pub-abstract">Abstract ↓</div>
     </div>
   </section>
 
