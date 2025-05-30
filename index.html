@@ -3,61 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sabi | Mitochondria in Health and Disease</title>
+  <title>sabi</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff;
     }
 
     .navbar {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 40px;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background-color: white;
       border-bottom: 1px solid #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .navbar img {
-      height: 60px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
+    .navbar a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      position: relative;
     }
 
-    .nav-links a:hover {
+    .navbar a:hover,
+    .navbar a.active {
       color: #e65300;
+    }
+
+    .navbar a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #e65300;
     }
 
     .hero {
       position: relative;
-      width: 95%;
-      margin: 30px auto;
-      height: 90vh;
-      overflow: hidden;
-      border-radius: 40px;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -12px;
-      right: -12px;
       width: 100%;
-      height: 100%;
-      border: 5px solid #ff6600;
-      border-radius: 40px;
-      z-index: 0;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .hero video {
@@ -67,20 +59,23 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: -2;
+      z-index: -1;
     }
 
     .hero-content {
       position: absolute;
-      top: 20%;
-      left: 5%;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
       background: rgba(255, 255, 255, 0.85);
       border-radius: 25px;
       padding: 30px 40px;
       max-width: 400px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
     }
 
+    /* Outer curved orange border exactly like first screenshot */
     .hero-content::after {
       content: "";
       position: absolute;
@@ -119,128 +114,28 @@
     .hero-content a:hover {
       background-color: #e65300;
     }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 40px;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #e65300;
-      margin-top: -10px;
-      margin-bottom: 20px;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-
-    .research-cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 20px auto;
-      flex-wrap: wrap;
-      max-width: 900px;
-    }
-
-    .card {
-      background-size: cover;
-      background-position: center;
-      width: 250px;
-      height: 150px;
-      border-radius: 20px;
-      display: flex;
-      align-items: flex-end;
-      padding: 15px;
-      color: white;
-      font-weight: bold;
-      position: relative;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      width: 100%;
-      height: 100%;
-      border: 3px solid #ff6600;
-      border-radius: 25px;
-      z-index: -1;
-    }
-
-    .publications {
-      background-color: #f8f8f8;
-      padding: 30px;
-      margin-top: 30px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .publications h2 {
-      text-align: center;
-      font-size: 1.4rem;
-    }
-
-    .publications p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      margin: 10px 0;
-    }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <img src="weizmann-logo.png" alt="Weizmann Institute Logo">
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Research</a>
-      <a href="#">Publications</a>
-      <a href="#">Group</a>
-      <a href="#">Join Us</a>
-      <a href="#">Gallery</a>
-      <a href="#">Science & Dance</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
+  <nav class="navbar">
+    <a href="#" class="active">Home</a>
+    <a href="#">Research</a>
+    <a href="#">Publications</a>
+    <a href="#">Group</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+  </nav>
 
   <div class="hero">
-  <video autoplay muted loop playsinline>
-    <source src="sabi.mp4" type="video/mp4" />
-
-    Your browser does not support the video tag.
-  </video>
-  <div class="hero-content">
-    <h1>sabi</h1>
-    <p>Mitochondria in Health and Disease</p>
-    <a href="#">Contact →</a>
-  </div>
- </div>
-
-
-  <div class="section-title">Research</div>
-  <div class="subtitle">Research page →</div>
-  <div class="research-cards">
-    <div class="card" style="background-image: url('im1.png');">Parkinson's Disease & α-synuclein</div>
-    <div class="card" style="background-image: url('im2.png');">MTCH2 & Mitochondrial Dynamics</div>
-    <div class="card" style="background-image: url('im3.png');">Obesity & Energy Demand</div>
-  </div>
-
-  <div class="publications">
-    <h2>Selected Publications</h2>
-    <p><strong>MTCH2 controls energy demand and expenditure to fuel anabolism during adipogenesis</strong><br>
-    Gross A. et al. (2023) <em>Cell Metabolism</em>, 35(2): 1070–1083.</p>
-
-    <p><strong>A BID-MTCH2 love story: Energizing mitochondria until apoptosis do them part?</strong><br>
-    Gross A. (2021) <em>Bioenergetic Communications</em>.</p>
-
-    <p><strong>MTCH2 cooperates with MFN2 and lysophosphatidic acid synthesis to sustain mitochondrial fusion</strong><br>
-    Gross A. et al. (2021) <em>EMBO Reports</em>, 21(1): e4567</p>
+    <video autoplay muted loop playsinline>
+      <source src="sabi.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>sabi</h1>
+      <p>Mitochondria in Health and Disease</p>
+      <a href="#">Contact →</a>
+    </div>
   </div>
 </body>
 </html>
