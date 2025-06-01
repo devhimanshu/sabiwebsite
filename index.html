@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sabi website | Mitochondria in Health and Disease</title>
+  <title>sabi | Mitochondria in Health and Disease</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
     body, html {
+      margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff;
     }
 
-    .navbar {
+    nav {
       display: flex;
       justify-content: center;
       gap: 30px;
@@ -28,19 +28,19 @@
       z-index: 1000;
     }
 
-    .navbar a {
+    nav a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
       position: relative;
     }
 
-    .navbar a:hover,
-    .navbar a.active {
+    nav a:hover,
+    nav a.active {
       color: #e65300;
     }
 
-    .navbar a.active::after {
+    nav a.active::after {
       content: "";
       position: absolute;
       bottom: -5px;
@@ -58,64 +58,52 @@
     }
 
     .hero video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       z-index: -1;
     }
 
-    .hero-content {
+    .header-overlay {
       position: absolute;
-      top: 50%;
-      left: 10%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 25px;
-      padding: 30px 40px;
-      max-width: 420px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      top: 25%;
+      left: 5%;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px 40px;
+      border-radius: 20px;
+      border: 3px solid #e65300;
+      box-shadow: 10px 10px 0 rgba(255, 92, 31, 0.4);
       z-index: 1;
     }
 
-    /* Orange outline */
-    .hero-content::before {
-      content: "";
-      position: absolute;
-      top: -15px;
-      left: -15px;
-      width: 100%;
-      height: 100%;
-      border: 3px solid #ff6600;
-      border-radius: 35px;
-      z-index: -1;
-    }
-
-    .hero-content h1 {
-      margin: 0;
-      font-size: 2.2rem;
+    .header-overlay h1 {
+      font-size: 2.5em;
       color: #000;
+      margin: 0;
     }
 
-    .hero-content p {
+    .header-overlay p {
+      font-size: 1.2em;
+      color: #333;
       margin: 10px 0 20px;
-      color: #444;
-      font-size: 1rem;
     }
 
-    .hero-content a {
-      text-decoration: none;
-      background-color: #ff6600;
+    .btn {
+      background-color: #ff5c1f;
       color: white;
       padding: 10px 20px;
+      border: none;
+      text-decoration: none;
       border-radius: 20px;
       font-weight: bold;
+      transition: background 0.3s ease;
       display: inline-block;
     }
 
-    .hero-content a:hover {
+    .btn:hover {
       background-color: #e65300;
     }
 
@@ -167,11 +155,44 @@
       font-weight: bold;
       font-size: 1em;
     }
+
+    .publications {
+      background: #f9f9f9;
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 60px;
+    }
+
+    .publications h3 {
+      text-align: center;
+      font-size: 1.6em;
+      margin-bottom: 30px;
+    }
+
+    .pub {
+      margin-bottom: 20px;
+    }
+
+    .pub-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .pub-authors {
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    .pub-abstract {
+      font-size: 0.9em;
+      color: #e65300;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
+  <nav>
     <a href="#" class="active">Home</a>
     <a href="#">Research</a>
     <a href="#">Publications</a>
@@ -181,14 +202,14 @@
   </nav>
 
   <div class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="sabi.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://github.com/devhimanshu/sabiwebsite/raw/refs/heads/main/sabi.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div class="hero-content">
+    <div class="header-overlay">
       <h1>sabi</h1>
       <p>Mitochondria in Health and Disease</p>
-      <a href="#">Contact →</a>
+      <a href="#" class="btn">Contact →</a>
     </div>
   </div>
 
@@ -207,6 +228,20 @@
         <img src="im3.png" alt="Fibromyalgia & Mitochondria">
         <div class="caption">Fibromyalgia & Mitochondria</div>
       </div>
+    </div>
+  </section>
+
+  <section class="section publications">
+    <h3>Selected Publications</h3>
+    <div class="pub">
+      <div class="pub-title">MTCH2 controls energy demand and expenditure to fuel anabolism during adipogenesis</div>
+      <div class="pub-authors">Chourasia S., Petcu I. C., Shoffler C., Abbasian D., Wang H., Han X., Sivan E., Brandis A., Mehlman T., Maliksy S., Itkin M., Sharp A., Rotkopf R., Bassa B., Ragy L., Zaltsman Y. & Gross A. (2025) EMBO Journal. 44.4, p. 1007–1038</div>
+      <div class="pub-abstract">Abstract ↓</div>
+    </div>
+    <div class="pub">
+      <div class="pub-title">A BID–MTCH2 love story: Energizing mitochondria until apoptosis do them part?</div>
+      <div class="pub-authors">Gross A. (2024) Bioenergetics Communications. 2024, 2024.1</div>
+      <div class="pub-abstract">Abstract ↓</div>
     </div>
   </section>
 
