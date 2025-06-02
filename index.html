@@ -3,20 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gross Lab | Mitochondria in Health and Disease</title>
+  <title>sabi</title>
   <style>
-    * {
+    body, html {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff;
     }
 
-    nav {
+    .navbar {
       display: flex;
       justify-content: center;
       gap: 30px;
@@ -28,19 +23,19 @@
       z-index: 1000;
     }
 
-    nav a {
+    .navbar a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
       position: relative;
     }
 
-    nav a:hover,
-    nav a.active {
+    .navbar a:hover,
+    .navbar a.active {
       color: #e65300;
     }
 
-    nav a.active::after {
+    .navbar a.active::after {
       content: "";
       position: absolute;
       bottom: -5px;
@@ -50,69 +45,170 @@
       background-color: #e65300;
     }
 
-    /* Hero Section with background video */
     .hero {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 80vh;
       overflow: hidden;
     }
 
     .hero video {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
       z-index: -1;
     }
 
-    .header-overlay {
+    .hero-content {
       position: absolute;
-      top: 25%;
-      left: 5%;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 25px 40px;
-      border-radius: 20px;
-      border: 3px solid #e65300;
-      box-shadow: 10px 10px 0 rgba(255, 92, 31, 0.4);
-      z-index: 1;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      background: white;
+      border-radius: 15px;
+      padding: 25px 35px;
       max-width: 400px;
+      border: 2px solid #e65300;
+      box-shadow: 6px 6px 0px 0px #f7a77a;
+      z-index: 1;
     }
 
-    .header-overlay h1 {
-      font-size: 2.2em;
-      color: #000;
+    .hero-content h1 {
       margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #000;
     }
 
-    .header-overlay p {
-      font-size: 1.1em;
-      color: #333;
+    .hero-content p {
       margin: 10px 0 20px;
+      color: #444;
     }
 
-    .btn {
-      background-color: #ff5c1f;
-      color: white;
-      padding: 10px 20px;
-      border: none;
+    .hero-content a {
       text-decoration: none;
-      border-radius: 20px;
+      background-color: #ff6600;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 15px;
       font-weight: bold;
-      transition: background 0.3s ease;
       display: inline-block;
+      font-size: 0.9rem;
     }
 
-    .btn:hover {
+    .hero-content a:hover {
       background-color: #e65300;
+    }
+
+    .research {
+      margin: 40px auto;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .section-header a {
+      text-decoration: none;
+      color: #ff6600;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .carousel {
+      position: relative;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    .carousel::-webkit-scrollbar-thumb {
+      background: #ff6600;
+      border-radius: 5px;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .carousel-nav span {
+      display: inline-block;
+      width: 20px;
+      height: 6px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .carousel-nav span.active {
+      background-color: #ff6600;
+    }
+
+    .carousel-nav .arrow {
+      color: #ff6600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .research-card {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      position: relative;
+      width: 300px;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      display: flex;
+      align-items: flex-end;
+      color: white;
+      font-weight: bold;
+      padding: 15px;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .research-card::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid #ff6600;
+      border-radius: 20px;
+      z-index: -1;
     }
   </style>
 </head>
 <body>
-
-  <nav>
+  <nav class="navbar">
     <a href="#" class="active">Home</a>
     <a href="#">Research</a>
     <a href="#">Publications</a>
@@ -122,16 +218,47 @@
   </nav>
 
   <div class="hero">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="https://github.com/devhimanshu/sabiwebsite/raw/refs/heads/main/sabi.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline>
+      <source src="sabi.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div class="header-overlay">
-      <h1>Gross Lab</h1>
+    <div class="hero-content">
+      <h1>sabi website</h1>
       <p>Mitochondria in Health and Disease</p>
-      <a href="#" class="btn">Contact →</a>
+      <a href="#">Contact →</a>
     </div>
   </div>
 
+  <section class="research">
+    <div class="section-header">
+      <h2>Research</h2>
+      <a href="#">Research page →</a>
+    </div>
+    <div class="carousel">
+      <div class="research-card" style="background-image: url('im1.png');">
+        Parkinson’s Disease & α-Synuclein →
+      </div>
+      <div class="research-card" style="background-image: url('im2.png');">
+        MTCH2 & Mitochondrial Dynamics →
+      </div>
+      <div class="research-card" style="background-image: url('im3.png');">
+        Obesity & Energy Demand →
+      </div>
+      <div class="research-card" style="background-image: url('im4.png');">
+        Mitochondrial Apoptosis →
+      </div>
+      <div class="research-card" style="background-image: url('im5.png');">
+        Lipid Signaling in Health →
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <span class="arrow">&#x276E;</span>
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="arrow">&#x276F;</span>
+    </div>
+  </section>
 </body>
 </html>
