@@ -3,283 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sabi | Mitochondria in Health and Disease</title>
+  <title>Gross Lab | Mitochondria in Health and Disease</title>
   <style>
-    body, html {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff;
     }
 
-    .navbar {
+    nav {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 40px;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background-color: white;
       border-bottom: 1px solid #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .navbar img {
-      height: 60px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
+    nav a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      position: relative;
     }
 
-    .nav-links a:hover {
+    nav a:hover,
+    nav a.active {
       color: #e65300;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #e65300;
     }
 
     .hero {
       position: relative;
-      width: 95%;
-      margin: 30px auto;
-      height: 90vh;
-      overflow: hidden;
-      border-radius: 40px;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -12px;
-      right: -12px;
       width: 100%;
-      height: 100%;
-      border: 5px solid #ff6600;
-      border-radius: 40px;
-      z-index: 0;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .hero video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
-      z-index: -2;
-    }
-
-    .hero-content {
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 25px;
-      padding: 30px 40px;
-      max-width: 400px;
-      z-index: 1;
-    }
-
-    .hero-content::after {
-      content: "";
-      position: absolute;
-      top: 12px;
-      left: 12px;
       width: 100%;
       height: 100%;
-      background: none;
-      border: 4px solid #ff6600;
-      border-radius: 35px;
+      object-fit: cover;
       z-index: -1;
     }
 
-    .hero-content h1 {
-      margin: 0;
-      font-size: 2rem;
-      font-weight: bold;
+    .header-overlay {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px 40px;
+      border-radius: 20px;
+      border: 3px solid #e65300;
+      box-shadow: 10px 10px 0 rgba(255, 92, 31, 0.4);
+      z-index: 1;
+      max-width: 400px;
+    }
+
+    .header-overlay h1 {
+      font-size: 2.2em;
       color: #000;
+      margin: 0;
     }
 
-    .hero-content p {
+    .header-overlay p {
+      font-size: 1.1em;
+      color: #333;
       margin: 10px 0 20px;
-      color: #444;
-      font-size: 1rem;
     }
 
-    .hero-content a {
-      text-decoration: none;
-      background-color: #ff6600;
+    .btn {
+      background-color: #ff5c1f;
       color: white;
       padding: 10px 20px;
+      border: none;
+      text-decoration: none;
       border-radius: 20px;
       font-weight: bold;
+      transition: background 0.3s ease;
       display: inline-block;
     }
 
-    .hero-content a:hover {
+    .btn:hover {
       background-color: #e65300;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 40px;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #e65300;
-      margin-top: -10px;
-      margin-bottom: 20px;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-
-    .slider-container {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .slider {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 20px;
-      padding: 20px 0;
-    }
-
-    .slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    .slider {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    .card {
-      background-size: cover;
-      background-position: center;
-      min-width: 250px;
-      height: 150px;
-      border-radius: 20px;
-      display: flex;
-      align-items: flex-end;
-      padding: 15px;
-      color: white;
-      font-weight: bold;
-      position: relative;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      width: 100%;
-      height: 100%;
-      border: 3px solid #ff6600;
-      border-radius: 25px;
-      z-index: -1;
-    }
-
-    .arrow-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    #scrollLeft { left: -40px; }
-    #scrollRight { right: -40px; }
-
-    .publications {
-      background-color: #f8f8f8;
-      padding: 30px;
-      margin-top: 30px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .publications h2 {
-      text-align: center;
-      font-size: 1.4rem;
-    }
-
-    .publications p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <img src="weizmann-logo.png" alt="Weizmann Institute Logo">
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Research</a>
-      <a href="#">Publications</a>
-      <a href="#">Group</a>
-      <a href="#">Join Us</a>
-      <a href="#">Gallery</a>
-      <a href="#">Science & Dance</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Research</a>
+    <a href="#">Publications</a>
+    <a href="#">Group</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+  </nav>
 
   <div class="hero">
     <video autoplay muted loop playsinline>
-      <source src="WhatsApp Video 2025-05-30 at 19.25.50.mp4" type="video/mp4" />
+      <source src="sabi.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div class="hero-content">
-      <h1>sabi</h1>
+    <div class="header-overlay">
+      <h1>Gross Lab</h1>
       <p>Mitochondria in Health and Disease</p>
-      <a href="#">Contact →</a>
+      <a href="#" class="btn">Contact →</a>
     </div>
   </div>
 
-  <div class="section-title">Research</div>
-  <div class="subtitle">Research page →</div>
-
-  <div class="slider-container">
-    <button id="scrollLeft" class="arrow-btn">←</button>
-    <div id="carousel" class="slider">
-      <div class="card" style="background-image: url('im1.png');">Parkinson's Disease & α-synuclein</div>
-      <div class="card" style="background-image: url('im2.png');">MTCH2 & Mitochondrial Dynamics</div>
-      <div class="card" style="background-image: url('im3.png');">Obesity & Energy Demand</div>
-      <!-- Add more cards here -->
-    </div>
-    <button id="scrollRight" class="arrow-btn">→</button>
-  </div>
-
-  <div class="publications">
-    <h2>Selected Publications</h2>
-    <p><strong>MTCH2 controls energy demand and expenditure to fuel anabolism during adipogenesis</strong><br>
-    Gross A. et al. (2023) <em>Cell Metabolism</em>, 35(2): 1070–1083.</p>
-
-    <p><strong>A BID-MTCH2 love story: Energizing mitochondria until apoptosis do them part?</strong><br>
-    Gross A. (2021) <em>Bioenergetic Communications</em>.</p>
-
-    <p><strong>MTCH2 cooperates with MFN2 and lysophosphatidic acid synthesis to sustain mitochondrial fusion</strong><br>
-    Gross A. et al. (2021) <em>EMBO Reports</em>, 21(1): e4567</p>
-  </div>
-
-  <script>
-    const carousel = document.getElementById('carousel');
-    document.getElementById('scrollLeft').onclick = () => carousel.scrollBy({ left: -300, behavior: 'smooth' });
-    document.getElementById('scrollRight').onclick = () => carousel.scrollBy({ left: 300, behavior: 'smooth' });
-  </script>
 </body>
 </html>
