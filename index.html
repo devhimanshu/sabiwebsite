@@ -145,17 +145,17 @@
       z-index: 10;
     }
 
-    .progress-indicator .dot {
+    .progress-indicator .bar {
       display: inline-block;
-      width: 25px;
-      height: 5px;
-      margin: 0 4px;
-      background-color: #e0e0e0;
+      width: 40px;
+      height: 6px;
+      margin: 0 6px;
+      background-color: #ddd;
       border-radius: 3px;
-      transition: background-color 0.3s;
+      transition: background-color 0.4s;
     }
 
-    .progress-indicator .dot.active {
+    .progress-indicator .bar.active {
       background-color: red;
     }
 
@@ -236,7 +236,7 @@
           Your browser does not support the video tag.
         </video>
         <div class="hero-content">
-          <h1>Gross Lab</h1>
+          <h1>Sabi website</h1>
           <p>Mitochondria in Health and Disease</p>
           <a href="#">Contact →</a>
         </div>
@@ -252,12 +252,12 @@
       <span onclick="nextSlide()">❯</span>
     </div>
     <div class="progress-indicator">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <span class="bar active"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
   </div>
 
@@ -286,9 +286,9 @@
 
     function updateSlide() {
       carousel.style.transform = `translateX(-${index * 100}%)`;
-      const dots = document.querySelectorAll('.progress-indicator .dot');
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
+      const bars = document.querySelectorAll('.progress-indicator .bar');
+      bars.forEach((bar, i) => {
+        bar.classList.toggle('active', i === index);
       });
     }
 
@@ -304,7 +304,7 @@
 
     setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 4000);
   </script>
 </body>
 </html>
