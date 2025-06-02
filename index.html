@@ -56,7 +56,8 @@
       display: flex;
       width: 600%;
       height: 100%;
-      animation: slideAnimation 60s infinite;
+      transform: translateX(0);
+      transition: transform 1s ease-in-out;
     }
 
     .hero-slide {
@@ -117,14 +118,23 @@
       background-color: #e65300;
     }
 
-    @keyframes slideAnimation {
-      0% { transform: translateX(0%); }
-      16.6% { transform: translateX(-100%); }
-      33.2% { transform: translateX(-200%); }
-      49.8% { transform: translateX(-300%); }
-      66.4% { transform: translateX(-400%); }
-      83% { transform: translateX(-500%); }
-      100% { transform: translateX(0%); }
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    .carousel-nav span {
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+      user-select: none;
     }
 
     .research {
@@ -197,7 +207,7 @@
   </nav>
 
   <div class="hero-container">
-    <div class="hero-carousel">
+    <div class="hero-carousel" id="heroCarousel">
       <div class="hero-slide">
         <video autoplay muted loop playsinline>
           <source src="sabi.mp4" type="video/mp4" />
@@ -209,21 +219,15 @@
           <a href="#">Contact →</a>
         </div>
       </div>
-      <div class="hero-slide">
-        <img src="im1.png" alt="Slide 1">
-      </div>
-      <div class="hero-slide">
-        <img src="im2.png" alt="Slide 2">
-      </div>
-      <div class="hero-slide">
-        <img src="im3.png" alt="Slide 3">
-      </div>
-      <div class="hero-slide">
-        <img src="im4.png" alt="Slide 4">
-      </div>
-      <div class="hero-slide">
-        <img src="im5.png" alt="Slide 5">
-      </div>
+      <div class="hero-slide"><img src="im1.png" alt="Slide 1"></div>
+      <div class="hero-slide"><img src="im2.png" alt="Slide 2"></div>
+      <div class="hero-slide"><img src="im3.png" alt="Slide 3"></div>
+      <div class="hero-slide"><img src="im4.png" alt="Slide 4"></div>
+      <div class="hero-slide"><img src="im5.png" alt="Slide 5"></div>
+    </div>
+    <div class="carousel-nav">
+      <span onclick="prevSlide()">❮</span>
+      <span onclick="nextSlide()">❯</span>
     </div>
   </div>
 
@@ -244,5 +248,29 @@
       </div>
     </div>
   </section>
+
+  <script>
+    let index = 0;
+    const carousel = document.getElementById('heroCarousel');
+    const totalSlides = carousel.children.length;
+
+    function updateSlide() {
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    }
+
+    setInterval(() => {
+      nextSlide();
+    }, 5000);
+  </script>
 </body>
 </html>
