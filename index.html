@@ -137,6 +137,28 @@
       user-select: none;
     }
 
+    .progress-indicator {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .progress-indicator .dot {
+      display: inline-block;
+      width: 25px;
+      height: 5px;
+      margin: 0 4px;
+      background-color: #e0e0e0;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .progress-indicator .dot.active {
+      background-color: red;
+    }
+
     .research {
       margin: 40px auto;
       max-width: 1200px;
@@ -229,6 +251,14 @@
       <span onclick="prevSlide()">❮</span>
       <span onclick="nextSlide()">❯</span>
     </div>
+    <div class="progress-indicator">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
   </div>
 
   <section class="research">
@@ -256,6 +286,10 @@
 
     function updateSlide() {
       carousel.style.transform = `translateX(-${index * 100}%)`;
+      const dots = document.querySelectorAll('.progress-indicator .dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
     }
 
     function nextSlide() {
